@@ -38,8 +38,8 @@ class Project
     found_project
   end
 
-  def self.update(attributes)
-    @name = attributes[:name]
+  def update_(attributes)
+    @name = attributes.fetch(:name,name)
     @id = self.id()
     DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
   end

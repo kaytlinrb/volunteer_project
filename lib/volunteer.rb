@@ -1,11 +1,10 @@
 class Volunteer
 
-  attr_accessor(:name,:id,:project_id)
+  attr_accessor(:name,:id)
 
   def initialize(attributes)
     @name = attributes[:name]
     @id = attributes[:id]
-    @project_id = attributes[:project_id]
   end
 
   def ==(other_volunteer)
@@ -18,8 +17,7 @@ end
     volunteers_in_database.each() do |volunteer|
       name = volunteer["name"]
       id = volunteer["id"].to_i()
-      project_id = volunteer["project_id"].to_i()
-      each_volunteer = Volunteer.new({:name => name, :id => id, :project_id => project_id})
+      each_volunteer = Volunteer.new({:name => name, :id => id})
       all_volunteers.push(each_volunteer)
     end
     all_volunteers
@@ -40,10 +38,9 @@ end
     found_volunteer
   end
 
-  define_singleton_method(:update) do |attributes|
-    @name = attributes[:name]
+  def update(attributes)
+    @name = attributes.fetch(:name,name)
     @id = self.id()
-    @project_id = self.project_id()
     DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
   end
 

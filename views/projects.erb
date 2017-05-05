@@ -1,19 +1,13 @@
 
+  <h1>Active Projects</h1>
 <% if @projects.any?() %>
-  <h1>Here is our library of books!</h1>
-
   <ul>
-    <% @books.each() do |book| %>
-      <li><a href="/books/<%= book.id()%>">Title: <%= book.title()%><br> Author: <%= book.author() %></a> </li>
+    <% @projects.each() do |project| %>
+      <li><a href="/projects/<%= project.id()%>"><%= project.name()%></a> </li>
     <% end %>
   </ul>
-
-<% else %>
-
-    <p>There are no lists yet!</p>
-
-<% end %>
-
+<% else%>
+<p>no projects</p>
+<%end%>
 
 <a href="/">Back to Home Page</a>
-Contact GitHub API Training Shop Blog About
