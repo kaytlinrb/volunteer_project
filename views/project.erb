@@ -1,0 +1,13 @@
+<h1 class ="jumbotron"> <%=@project.name()%></h1>
+
+<form action="/project/<%= @project.id() %>/delete" method="post">
+  <label for="delete">Delete this project:</label>
+  <input name="_method" type="hidden" value="delete">
+  <br>
+  <button type="submit">Delete</button>
+</form>
+
+<a href="/project/<%= @project.id() %>/update"><h2>rename</h2></a>
+
+<a href="/project/<%= @project.id() %>/add_volunteer"><h2>Add Volunteer</h2></a>
+<a href="/">go home</a>

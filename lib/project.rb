@@ -18,9 +18,9 @@ class Project
       name = project["name"]
       id = project["id"].to_i()
       each_project = Project.new({:name => name, :id => id})
-      all_volunteers.push(each_project)
+      all_projects.push(each_project)
     end
-    all_volunteers
+    all_projects
   end
 
   def save
@@ -38,13 +38,13 @@ class Project
     found_project
   end
 
-  def update_(attributes)
+  def update(attributes)
     @name = attributes.fetch(:name,name)
     @id = self.id()
-    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
+    DB.exec("UPDATE projects SET name = '#{@name}' WHERE id = #{@id};")
   end
 
   def delete
-    DB.exec("DELETE FROM volunteers WHERE id = #{self.id()};")
+    DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
   end
 end

@@ -3,7 +3,7 @@ require("pg")
 require("volunteer")
 require("project")
 
-DB = PG.connect({:dbname => 'volunteer_project_test'})
+DB = PG.connect({:dbname => 'volunteer_tracker_test'})
 
 RSpec.configure do |config|
   config.after(:each) do

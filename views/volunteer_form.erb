@@ -1,0 +1,7 @@
+<h2> Add a Volunteer </h2>
+
+<form action="/project/<%= @project.id() %>/volunteers/new" method="post">
+  <label for="name">Volunteer Name: </label>
+  <input id="name" name="name" type="text">
+  <button type="submit">Add Volunteer</button>
+</form>
